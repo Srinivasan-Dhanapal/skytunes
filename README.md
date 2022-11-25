@@ -1,12 +1,13 @@
 ## Sky Tunes
 
 ## Challenge
+
 > Sky Germany is branching into the music business and needs a new website (fictional).
 > This code challenge allows you to choose your own path and lets you flaunt your creative panache and technical skills along the way.
 
-
 #### Requirements
-------------
+
+---
 
 **Acceptance Criteria**: Show top 100 albums based on the json feed here: [API](https://itunes.apple.com/us/rss/topalbums/limit=100/json)
 
@@ -24,16 +25,15 @@
 
 > > Add a feature that you think would work well here (for instance, advanced search, integration with other API, a "Favorite" functionality)
 
-*Describe the feature in separate markdown file*
+_Describe the feature in separate markdown file_
 
 #### Evaluation Criteria
 
-------------
-
+---
 
 **TypeScript**: Best practices
 
-> > 1. We're looking for you to produce working code, with enough room to demonstrate how to structure components in a small program.  
+> > 1. We're looking for you to produce working code, with enough room to demonstrate how to structure components in a small program.
 > > 1. Show us your work through your commit history.
 
 **Completeness**: Did you complete the features?

@@ -1,13 +1,11 @@
 {
-  "extends": [
-    "next",
-    "next/core-web-vitals",
-    "eslint:recommended"
-  ],
+  "extends": ["next", "next/core-web-vitals", "eslint:recommended", "prettier"],
   "globals": {
     "React": "readonly"
   },
   "rules": {
+    "no-multiple-empty-lines": [2, { "max": 2, "maxEOF": 0 }],
+    "no-trailing-spaces": 1,
     "no-unused-vars": [1, { "args": "after-used", "argsIgnorePattern": "^_" }]
   }
 }
