@@ -1,0 +1,26 @@
+{
+  "extends": [
+    "plugin:storybook/recommended",
+    "next",
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "prettier"
+  ],
+  "globals": {
+    "React": "readonly"
+  },
+  "rules": {
+    "no-multiple-empty-lines": [2, { "max": 2, "maxEOF": 0 }],
+    "no-trailing-spaces": 1,
+    "no-unused-vars": [1, { "args": "after-used", "argsIgnorePattern": "^_" }]
+  },
+  "overrides": [
+    {
+      "files": ["*.stories.@(ts|tsx|js|jsx|mjs|cjs)"],
+      "rules": {
+        // example of overriding a rule
+        "storybook/hierarchy-separator": "error"
+      }
+    }
+  ]
+}
