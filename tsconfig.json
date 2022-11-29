@@ -13,8 +13,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
+    "jsxImportSource": "@emotion/react",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "store/context/*js"],
   "exclude": ["node_modules"]
 }
