@@ -1,5 +1,4 @@
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import Divider from '@mui/material/Divider';
 import MuiDrawer, { DrawerProps as MuiDrawerProps } from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import List from '@mui/material/List';
@@ -45,7 +44,7 @@ const Sidebar: React.FC<ISidebar> = () => {
     setOpen(!open);
   };
   return (
-    <AppDrawer className={styles.glassy} variant="permanent" open={open}>
+    <AppDrawer className={styles.glassy} variant="permanent" open={open} sx={{ position: 'fixed', height: '100vh' }}>
       <Toolbar
         sx={{
           display: 'flex',
@@ -58,9 +57,7 @@ const Sidebar: React.FC<ISidebar> = () => {
           <ChevronLeftIcon />
         </IconButton>
       </Toolbar>
-      <Divider />
       <List component="nav">
-        <Divider sx={{ my: 1 }} />
       </List>
     </AppDrawer>
   )
