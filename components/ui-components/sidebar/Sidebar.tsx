@@ -32,6 +32,7 @@ const AppDrawer = styled(MuiDrawer, {
         duration: theme.transitions.duration.leavingScreen,
       }),
       width: 0,
+      border: 0
     }),
   },
 }))
