@@ -1,11 +1,19 @@
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
+import useSWR from 'swr'
 import PrimaryLayout from '../components/layouts/primary/PrimaryLayout'
 import Link from '../theme/Link'
 import { NextPageWithLayout } from './page'
 
+const fetcher = (arg: any, ...args: any) => fetch(arg, ...args).then((res) => res.json())
+
 const Home: NextPageWithLayout = () => {
+
+  const { data, error } = useSWR('/api/albums', fetcher)
+
+  if (error) return <div>Failed to load users</div>
+  if (!data) return <div>Loading...</div>
   return (
     <Container maxWidth="lg">
       <Box
