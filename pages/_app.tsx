@@ -101,9 +101,7 @@ function MyApp(props: AppPropsWithLayout) {
       </Head>
       <ThemeSwitcherContext.Provider value={{ themeContext, setThemeContext }}>
         <ThemeProvider theme={theme}>
-
           <motion.div className="progress-bar" style={{ scaleX }} />
-
           {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
           <CssBaseline />
           <ModeSwitcher />

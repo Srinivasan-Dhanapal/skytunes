@@ -5,6 +5,7 @@ import List from '@mui/material/List';
 import { styled } from '@mui/material/styles';
 import Toolbar from '@mui/material/Toolbar';
 import * as React from 'react';
+import MenuToggleContext from '../../../store/context/MenuToggle';
 import styles from './Sidebar.module.css';
 export interface ISidebar extends React.ComponentPropsWithoutRef<'div'> { }
 interface DrawerProps extends MuiDrawerProps {
@@ -30,21 +31,18 @@ const AppDrawer = styled(MuiDrawer, {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen,
       }),
-      width: theme.spacing(7),
-      [theme.breakpoints.up('sm')]: {
-        width: theme.spacing(9),
-      },
+      width: 0,
     }),
   },
 }))
 
 const Sidebar: React.FC<ISidebar> = () => {
-  const [open, setOpen] = React.useState(false)
+  const context = React.useContext(MenuToggleContext)
   const toggleDrawer = () => {
-    setOpen(!open);
+    context.setMenuToggleContext(!context.menuToggleContext)
   };
   return (
-    <AppDrawer className={styles.glassy} variant="permanent" open={open} sx={{ position: 'fixed', height: '100vh' }}>
+    <AppDrawer className={styles.glassy} variant="permanent" open={context.menuToggleContext} sx={{ position: 'fixed', height: '100vh', zIndex: 1200 }}>
       <Toolbar
         sx={{
           display: 'flex',

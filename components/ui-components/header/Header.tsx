@@ -8,7 +8,7 @@ import { styled } from '@mui/material/styles';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
-
+import MenuToggleContext from '../../../store/context/MenuToggle';
 export interface IHeader extends React.ComponentPropsWithoutRef<'header'> { }
 const drawerWidth: number = 240
 
@@ -33,12 +33,12 @@ const AppBar = styled(MuiAppBar, {
   }),
 }))
 const Header: React.FC<IHeader> = () => {
-  const [open, setOpen] = React.useState(false)
+  const context = React.useContext(MenuToggleContext)
   const toggleMenu = () => {
-    setOpen(!open)
+    context.setMenuToggleContext(!context.menuToggleContext)
   }
   return (
-    <AppBar position="fixed" open={open}>
+    <AppBar position="fixed" open={context.menuToggleContext}>
       <Toolbar
         sx={{
           pr: '24px', // keep right padding when drawer closed
@@ -51,7 +51,7 @@ const Header: React.FC<IHeader> = () => {
           onClick={toggleMenu}
           sx={{
             marginRight: '36px',
-            ...(open && { display: 'none' }),
+            ...(context.menuToggleContext && { display: 'none' }),
           }}
         >
           <MenuIcon />
