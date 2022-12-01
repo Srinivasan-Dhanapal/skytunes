@@ -1,5 +1,5 @@
-import { createContext } from "react";
+import { createContext } from 'react'
 
-const ThemeSwitcherContext = createContext();
+const ThemeSwitcherContext = createContext()
 
-export default ThemeSwitcherContext;
+export default ThemeSwitcherContext

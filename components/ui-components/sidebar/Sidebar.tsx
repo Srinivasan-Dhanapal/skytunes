@@ -1,12 +1,12 @@
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import MuiDrawer, { DrawerProps as MuiDrawerProps } from '@mui/material/Drawer';
-import IconButton from '@mui/material/IconButton';
-import List from '@mui/material/List';
-import { styled } from '@mui/material/styles';
-import Toolbar from '@mui/material/Toolbar';
-import * as React from 'react';
-import MenuToggleContext from '../../../store/context/MenuToggle';
-import styles from './Sidebar.module.css';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
+import MuiDrawer, { DrawerProps as MuiDrawerProps } from '@mui/material/Drawer'
+import IconButton from '@mui/material/IconButton'
+import List from '@mui/material/List'
+import { styled } from '@mui/material/styles'
+import Toolbar from '@mui/material/Toolbar'
+import * as React from 'react'
+import MenuToggleContext from '../../../store/context/MenuToggle'
+import styles from './Sidebar.module.css'
 export interface ISidebar extends React.ComponentPropsWithoutRef<'div'> { }
 interface DrawerProps extends MuiDrawerProps {
   open?: boolean

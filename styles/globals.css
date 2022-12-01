@@ -14,14 +14,20 @@ a {
 * {
   box-sizing: border-box;
 }
+.body{
+  height: '100vh';
+  background-color: #FAFAFA;
+  color: #000000de;
+}
 
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
   body {
-    color: white;
-    background: black;
+    color: #FAFAFA;
+    background: #02AAB0;
+   
   }
 }
 .progress-bar {

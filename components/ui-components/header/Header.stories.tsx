@@ -1,6 +1,6 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import Header, { IHeader } from './Header';
-import { mockHeaderProps } from './Header.mocks';
+import { ComponentMeta, ComponentStory } from '@storybook/react'
+import Header, { IHeader } from './Header'
+import { mockHeaderProps } from './Header.mocks'
 
 export default {
   title: 'navigation/Header',

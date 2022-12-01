@@ -1,7 +1,7 @@
-import { IHeader } from './Header';
+import { IHeader } from './Header'
 
-const base: IHeader = {};
+const base: IHeader = {}
 
 export const mockHeaderProps = {
   base,
-};
+}

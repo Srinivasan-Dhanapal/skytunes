@@ -1,14 +1,14 @@
 
-import MenuIcon from '@mui/icons-material/Menu';
-import TuneIcon from '@mui/icons-material/Tune';
-import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
-import Badge from '@mui/material/Badge';
-import IconButton from '@mui/material/IconButton';
-import { styled } from '@mui/material/styles';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import * as React from 'react';
-import MenuToggleContext from '../../../store/context/MenuToggle';
+import MenuIcon from '@mui/icons-material/Menu'
+import TuneIcon from '@mui/icons-material/Tune'
+import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar'
+import Badge from '@mui/material/Badge'
+import IconButton from '@mui/material/IconButton'
+import { styled } from '@mui/material/styles'
+import Toolbar from '@mui/material/Toolbar'
+import Typography from '@mui/material/Typography'
+import * as React from 'react'
+import MenuToggleContext from '../../../store/context/MenuToggle'
 export interface IHeader extends React.ComponentPropsWithoutRef<'header'> { }
 const drawerWidth: number = 240
 

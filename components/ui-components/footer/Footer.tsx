@@ -1,13 +1,13 @@
-import DownloadIcon from '@mui/icons-material/Download';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import HomeIcon from '@mui/icons-material/Home';
-import BottomNavigation from '@mui/material/BottomNavigation';
-import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import Paper from '@mui/material/Paper';
-import { useRouter } from "next/router";
-import * as React from 'react';
-import { UrlObject } from 'url';
-import styles from './Footer.module.css';
+import DownloadIcon from '@mui/icons-material/Download'
+import FavoriteIcon from '@mui/icons-material/Favorite'
+import HomeIcon from '@mui/icons-material/Home'
+import BottomNavigation from '@mui/material/BottomNavigation'
+import BottomNavigationAction from '@mui/material/BottomNavigationAction'
+import Paper from '@mui/material/Paper'
+import { useRouter } from "next/router"
+import * as React from 'react'
+import { UrlObject } from 'url'
+import styles from './Footer.module.css'
 export interface IFooter extends React.ComponentPropsWithoutRef<'footer'> { }
 
 const Footer: React.FC<IFooter> = () => {
@@ -22,7 +22,7 @@ const Footer: React.FC<IFooter> = () => {
   ];
   const pathIndex = toolbarConfigs.findIndex((item) => item.pathname === router.pathname);
   return (
-    <Paper component="footer" className={styles.glassy} sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 1300, background: 'none' }} elevation={3}>
+    <Paper component="footer" className={styles.glassy} sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 1300 }} elevation={3}>
       <BottomNavigation
         showLabels
         value={pathIndex}

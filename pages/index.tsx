@@ -6,7 +6,6 @@ import CardContent from '@mui/material/CardContent'
 import CardHeader from '@mui/material/CardHeader'
 import Container from '@mui/material/Container'
 import Grid from '@mui/material/Grid'
-import { styled } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 import Image from 'next/image'
 import * as React from 'react'
@@ -32,16 +31,6 @@ export async function getServerSideProps(context: any) {
 }
 
 function HomeTemplate() {
-  const ElevatedCard = styled(Card)`
-  ${({ theme }) => `
-  transition: ${theme.transitions.create(['transform'], {
-    duration: 500,
-  })};
-  &:hover {
-    transform: scale(1.05);
-  }
-  `}
-`;
   const { data, error } = useSWR(ALBUMS_API)
 
   if (error) return <div>Failed to load users</div>
@@ -68,7 +57,7 @@ function HomeTemplate() {
                   display: 'flex',
                 }}
               >
-                <ElevatedCard sx={{ width: 340 }} className='glassy' elevation={2}>
+                <Card sx={{ width: 340 }} className='glassy' elevation={2}>
                   <CardHeader
                     avatar={
                       <Avatar aria-label="recipe">
@@ -100,7 +89,7 @@ function HomeTemplate() {
                     </Typography>
                   </CardContent>
                   <CollasiblePanel link={album.link} category={album.category} rights={album.rights} />
-                </ElevatedCard>
+                </Card>
               </Box>
             </Grid>
           ))}
@@ -109,7 +98,6 @@ function HomeTemplate() {
     </Container>
   )
 }
-
 
 const Home: NextPageWithLayout = ({ ...props }) => {
   const { fallback }: { fallback?: any } = props;

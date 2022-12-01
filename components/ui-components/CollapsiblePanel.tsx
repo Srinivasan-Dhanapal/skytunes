@@ -1,14 +1,14 @@
-import Download from '@mui/icons-material/Download';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import OpenInNewIcon from '@mui/icons-material/OpenInNew';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import Collapse from '@mui/material/Collapse';
-import IconButton, { IconButtonProps } from '@mui/material/IconButton';
-import { styled } from '@mui/material/styles';
-import Typography from '@mui/material/Typography';
-import React from 'react';
+import Download from '@mui/icons-material/Download'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import FavoriteIcon from '@mui/icons-material/Favorite'
+import OpenInNewIcon from '@mui/icons-material/OpenInNew'
+import CardActions from '@mui/material/CardActions'
+import CardContent from '@mui/material/CardContent'
+import Collapse from '@mui/material/Collapse'
+import IconButton, { IconButtonProps } from '@mui/material/IconButton'
+import { styled } from '@mui/material/styles'
+import Typography from '@mui/material/Typography'
+import React from 'react'
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
 }

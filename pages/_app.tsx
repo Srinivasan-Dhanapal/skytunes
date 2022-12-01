@@ -1,10 +1,10 @@
 import { CacheProvider, EmotionCache } from '@emotion/react'
-import Brightness4Icon from '@mui/icons-material/Brightness4'
-import Brightness7Icon from '@mui/icons-material/Brightness7'
+import FitbitIcon from '@mui/icons-material/Fitbit'
+import LightModeIcon from '@mui/icons-material/LightMode'
+import CssBaseline from '@mui/material/CssBaseline'
+
 import {
-  createTheme,
-  CssBaseline,
-  IconButton,
+  createTheme, IconButton,
   PaletteMode, ThemeProvider,
   Tooltip
 } from '@mui/material'
@@ -46,18 +46,6 @@ function ModeSwitcher() {
           borderBottomLeftRadius: '50%',
           borderTopRightRadius: '50%',
           borderBottomRightRadius: '4px',
-          background: `${context.themeContext === 'light'
-            ? glassyDefault.components.MuiCssBaseline.styleOverrides.body
-              .background
-            : lightDefault.components.MuiCssBaseline.styleOverrides.body
-              .background
-            }`,
-          color: `${context.themeContext === 'light'
-            ? glassyDefault.components.MuiCssBaseline.styleOverrides.body
-              .color
-            : lightDefault.components.MuiCssBaseline.styleOverrides.body
-              .color
-            }`,
           top: '25%',
           position: 'fixed',
           right: 10,
@@ -65,9 +53,9 @@ function ModeSwitcher() {
       >
         <IconButton color="inherit" size="large" disableRipple>
           {context.themeContext === 'dark' ? (
-            <Brightness7Icon />
+            <LightModeIcon />
           ) : (
-            <Brightness4Icon />
+              <FitbitIcon />
           )}
         </IconButton>
       </Fab>

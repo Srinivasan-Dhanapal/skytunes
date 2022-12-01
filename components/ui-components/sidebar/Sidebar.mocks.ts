@@ -1,7 +1,7 @@
-import { ISidebar } from './Sidebar';
+import { ISidebar } from './Sidebar'
 
-const base: ISidebar = {};
+const base: ISidebar = {}
 
 export const mockSidebarProps = {
   base,
-};
+}

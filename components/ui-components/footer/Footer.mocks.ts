@@ -1,7 +1,7 @@
-import { IFooter } from './Footer';
+import { IFooter } from './Footer'
 
-const base: IFooter = {};
+const base: IFooter = {}
 
 export const mockFooterProps = {
   base,
-};
+}

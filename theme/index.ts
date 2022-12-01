@@ -16,7 +16,7 @@ const lightDefault = {
   ...commonDefault,
   palette: {
     background: {
-      default: '#00CDAC',
+      default: 'white',
     },
     primary: {
       main: '#3d5afe',
@@ -28,44 +28,22 @@ const lightDefault = {
       main: '#ff4081',
     },
   },
-  components: {
-    MuiCssBaseline: {
-      styleOverrides: {
-        body: {
-          color: '#000000de',
-          height: '100vh',
-          background: 'linear-gradient(to right, #FAFAFA, #FAFAFA)',
-        },
-      },
-    },
-  },
 }
 
 const glassyDefault = {
   ...commonDefault,
   palette: {
     background: {
-      default: '#ebf4f5',
+      default: '#02AAB0',
     },
     primary: {
       main: '#0288d1',
     },
     secondary: {
-      main: '#000000de',
+      main: '#FAFAFA',
     },
     error: {
       main: '#ff4081',
-    },
-  },
-  components: {
-    MuiCssBaseline: {
-      styleOverrides: {
-        body: {
-          color: '#FAFAFA',
-          height: '100vh',
-          background: 'linear-gradient(to right, #02AAB0, #00CDAC)',
-        },
-      },
     },
   },
 }
