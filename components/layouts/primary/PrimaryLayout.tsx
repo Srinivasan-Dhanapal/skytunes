@@ -27,7 +27,7 @@ const PrimaryLayout: React.FC<IPrimaryLayout> = ({ children, ...divProps }) => {
           >
             <Toolbar />
             <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-              <Grid container spacing={3}>
+              <Grid>
                 {children}
               </Grid>
             </Container>

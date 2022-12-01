@@ -1,106 +1,93 @@
+
+import Avatar from '@mui/material/Avatar'
 import Box from '@mui/material/Box'
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
+import CardHeader from '@mui/material/CardHeader'
+import CardMedia from '@mui/material/CardMedia'
 import Container from '@mui/material/Container'
+import Grid from '@mui/material/Grid'
+import { styled } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
+import * as React from 'react'
 import useSWR from 'swr'
 import PrimaryLayout from '../components/layouts/primary/PrimaryLayout'
-import Link from '../theme/Link'
+import CollasiblePanel from '../components/ui-components/CollapsiblePanel'
 import { NextPageWithLayout } from './page'
 
 const fetcher = (arg: any, ...args: any) => fetch(arg, ...args).then((res) => res.json())
 
 const Home: NextPageWithLayout = () => {
 
+  const ElevatedCard = styled(Card)`
+  ${({ theme }) => `
+  transition: ${theme.transitions.create(['transform'], {
+    duration: 500,
+  })};
+  &:hover {
+    transform: scale(1.05);
+  }
+  `}
+`;
   const { data, error } = useSWR('/api/albums', fetcher)
 
   if (error) return <div>Failed to load users</div>
   if (!data) return <div>Loading...</div>
   return (
-    <Container maxWidth="lg">
-      <Box
-        sx={{
-          my: 4,
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <Typography variant="h4" component="h1" gutterBottom>
-          MUI v5 + Next.js with TypeScript example
-        </Typography>
-        <Link href="/about" color="secondary">
-          Go to the about page
-        </Link>
-        <article>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ac
-            rhoncus quam.
-          </p>
-          <p>
-            Fringilla quam urna. Cras turpis elit, euismod eget ligula quis,
-            imperdiet sagittis justo. In viverra fermentum ex ac vestibulum.
-            Aliquam eleifend nunc a luctus porta. Mauris laoreet augue ut felis
-            blandit, at iaculis odio ultrices. Nulla facilisi. Vestibulum cursus
-            ipsum tellus, eu tincidunt neque tincidunt a.
-          </p>
-          <h2>Sub-header</h2>
-          <p>
-            In eget sodales arcu, consectetur efficitur metus. Duis efficitur
-            tincidunt odio, sit amet laoreet massa fringilla eu.
-          </p>
-          <p>
-            Pellentesque id lacus pulvinar elit pulvinar pretium ac non urna.
-            Mauris id mauris vel arcu commodo venenatis. Aliquam eu risus arcu.
-            Proin sit amet lacus mollis, semper massa ut, rutrum mi.
-          </p>
-          <p>Sed sem nisi, luctus consequat ligula in, congue sodales nisl.</p>
-          <p>
-            Vestibulum bibendum at erat sit amet pulvinar. Pellentesque pharetra
-            leo vitae tristique rutrum. Donec ut volutpat ante, ut suscipit leo.
-          </p>
-          <h2>Sub-header</h2>
-          <p>
-            Maecenas quis elementum nulla, in lacinia nisl. Ut rutrum fringilla
-            aliquet. Pellentesque auctor vehicula malesuada. Aliquam id feugiat
-            sem, sit amet tempor nulla. Quisque fermentum felis faucibus, vehicula
-            metus ac, interdum nibh. Curabitur vitae convallis ligula. Integer ac
-            enim vel felis pharetra laoreet. Interdum et malesuada fames ac ante
-            ipsum primis in faucibus. Pellentesque hendrerit ac augue quis
-            pretium.
-          </p>
-          <p>
-            Morbi ut scelerisque nibh. Integer auctor, massa non dictum tristique,
-            elit metus efficitur elit, ac pretium sapien nisl nec ante. In et ex
-            ultricies, mollis mi in, euismod dolor.
-          </p>
-          <p>Quisque convallis ligula non magna efficitur tincidunt.</p>
-          <p>
-            Pellentesque id lacus pulvinar elit pulvinar pretium ac non urna.
-            Mauris id mauris vel arcu commodo venenatis. Aliquam eu risus arcu.
-            Proin sit amet lacus mollis, semper massa ut, rutrum mi.
-          </p>
-          <p>Sed sem nisi, luctus consequat ligula in, congue sodales nisl.</p>
-          <p>
-            Vestibulum bibendum at erat sit amet pulvinar. Pellentesque pharetra
-            leo vitae tristique rutrum. Donec ut volutpat ante, ut suscipit leo.
-          </p>
-          <h2>Sub-header</h2>
-          <p>
-            Maecenas quis elementum nulla, in lacinia nisl. Ut rutrum fringilla
-            aliquet. Pellentesque auctor vehicula malesuada. Aliquam id feugiat
-            sem, sit amet tempor nulla. Quisque fermentum felis faucibus, vehicula
-            metus ac, interdum nibh. Curabitur vitae convallis ligula. Integer ac
-            enim vel felis pharetra laoreet. Interdum et malesuada fames ac ante
-            ipsum primis in faucibus. Pellentesque hendrerit ac augue quis
-            pretium.
-          </p>
-          <p>
-            Morbi ut scelerisque nibh. Integer auctor, massa non dictum tristique,
-            elit metus efficitur elit, ac pretium sapien nisl nec ante. In et ex
-            ultricies, mollis mi in, euismod dolor.
-          </p>
-          <p>Quisque convallis ligula non magna efficitur tincidunt.</p>
-        </article>
+    <Container maxWidth="xl">
+      <Typography variant="h4" gutterBottom align="center">
+        {`${data.title} Welcomes you!!!`}
+      </Typography>
+      <Typography variant="h6" gutterBottom>
+        {`Author: ${data.author}`}
+      </Typography>
+      <Typography gutterBottom paragraph>
+        {`Terms: ${data.rights}`}
+      </Typography>
+      <Box sx={{ flexGrow: 1 }}>
+        <Grid container spacing={4}>
+          {data.albums.map((album: {
+            category: string; rights: string; artist: string; link: string; title: string; releaseDate: string; thumbnail: string; price: string; available: number
+          }, index: React.Key) => (
+            <Grid key={index} item >
+              <Box
+                sx={{
+                  display: 'flex',
+                }}
+              >
+                <ElevatedCard sx={{ width: 340 }} className='glassy' elevation={2}>
+                  <CardHeader
+                    avatar={
+                      <Avatar aria-label="recipe">
+                        {album.title.trim().charAt(0)}
+                      </Avatar>
+                    }
+                    title={album.title.trim()}
+                    subheader={album.releaseDate}
+                  />
+                  <CardMedia
+                    component="img"
+                    height="170"
+                    image={album.thumbnail}
+                    alt="Music Cover"
+                  />
+                  <CardContent>
+                    <Typography variant="h4" color="text.success" gutterBottom>
+                      {album.price}
+                    </Typography>
+                    <Typography variant="caption" paragraph>
+                      {album.available ? `Only ${album.available} available` : 'Sold out'}
+                    </Typography>
+                    <Typography variant="subtitle2">
+                      {album.artist}
+                    </Typography>
+                  </CardContent>
+                  <CollasiblePanel link={album.link} category={album.category} rights={album.rights} />
+                </ElevatedCard>
+              </Box>
+            </Grid>
+          ))}
+        </Grid>
       </Box>
     </Container>
   )

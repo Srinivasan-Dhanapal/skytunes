@@ -1,3 +1,4 @@
+import DownloadIcon from '@mui/icons-material/Download';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import HomeIcon from '@mui/icons-material/Home';
 import BottomNavigation from '@mui/material/BottomNavigation';
@@ -7,7 +8,6 @@ import { useRouter } from "next/router";
 import * as React from 'react';
 import { UrlObject } from 'url';
 import styles from './Footer.module.css';
-
 export interface IFooter extends React.ComponentPropsWithoutRef<'footer'> { }
 
 const Footer: React.FC<IFooter> = () => {
@@ -17,8 +17,8 @@ const Footer: React.FC<IFooter> = () => {
   };
   const toolbarConfigs = [
     { label: "Home", pathname: '/', icon: <HomeIcon /> },
-    { label: "Favorites", pathname: '/favourites', icon: <HomeIcon /> },
-    { label: "Archive", pathname: '/archive', icon: <FavoriteIcon /> }
+    { label: "Favorites", pathname: '/favourites', icon: <FavoriteIcon /> },
+    { label: "Downloads", pathname: '/downloads', icon: <DownloadIcon /> }
   ];
   const pathIndex = toolbarConfigs.findIndex((item) => item.pathname === router.pathname);
   return (
