@@ -148,7 +148,18 @@ export default async function handler(
     return res.status(405).end()
   }
 
-  const response = await fetch(`${process.env.ALBUMS_URI}/limit=${limit}/json`)
+  const response = await fetch(
+    `${process.env.ALBUMS_URI}/limit=${limit}/json`,
+    {
+      method: 'GET',
+      headers: {
+        // update with your user-agent
+        'User-Agent':
+          'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36',
+        Accept: 'application/json; charset=UTF-8',
+      },
+    }
+  )
   if (response.ok) {
     const fetchData: FetchData = await response.json()
     const albums: AlbumResponse[] = fetchData.feed.entry.map((album: Album) => {
@@ -196,8 +207,8 @@ export default async function handler(
       updated: fetchData.feed.updated.label,
     }
     // Cache the Albums response for 3 seconds
-    // res.setHeader('Cache-Control', 's-maxage=3, stale-while-revalidate')
-
+    res.setHeader('Cache-Control', 's-maxage=3, stale-while-revalidate')
+    res.setHeader('Accept', 'application/json; charset=UTF-8')
     res.status(200).json(resultData)
   } else {
     res.status(400).json({

@@ -4,21 +4,34 @@ import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import CardHeader from '@mui/material/CardHeader'
-import CardMedia from '@mui/material/CardMedia'
 import Container from '@mui/material/Container'
 import Grid from '@mui/material/Grid'
 import { styled } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
+import Image from 'next/image'
 import * as React from 'react'
-import useSWR from 'swr'
+import useSWR, { SWRConfig } from 'swr'
 import PrimaryLayout from '../components/layouts/primary/PrimaryLayout'
 import CollasiblePanel from '../components/ui-components/CollapsiblePanel'
 import { NextPageWithLayout } from './page'
 
 const fetcher = (arg: any, ...args: any) => fetch(arg, ...args).then((res) => res.json())
+const ALBUMS_API = '/api/albums';
 
-const Home: NextPageWithLayout = () => {
+export async function getServerSideProps(context: any) {
+  const NextRequestMetaSymbol = Reflect.ownKeys(context.req).find(key => key.toString() === 'Symbol(NextRequestMeta)');
+  const serverURL = NextRequestMetaSymbol && context.req[NextRequestMetaSymbol].__NEXT_INIT_URL;
+  const albumsInfo = await fetcher(serverURL + ALBUMS_API);
+  return {
+    props: {
+      fallback: {
+        [ALBUMS_API]: albumsInfo
+      }
+    }
+  };
+}
 
+function HomeTemplate() {
   const ElevatedCard = styled(Card)`
   ${({ theme }) => `
   transition: ${theme.transitions.create(['transform'], {
@@ -29,7 +42,7 @@ const Home: NextPageWithLayout = () => {
   }
   `}
 `;
-  const { data, error } = useSWR('/api/albums', fetcher)
+  const { data, error } = useSWR(ALBUMS_API)
 
   if (error) return <div>Failed to load users</div>
   if (!data) return <div>Loading...</div>
@@ -65,12 +78,16 @@ const Home: NextPageWithLayout = () => {
                     title={album.title.trim()}
                     subheader={album.releaseDate}
                   />
-                  <CardMedia
-                    component="img"
-                    height="170"
-                    image={album.thumbnail}
-                    alt="Music Cover"
-                  />
+                  <Box sx={{ position: 'relative', height: '170px' }}>
+                    <Image
+                      className="album-thumbnail"
+                      src={album.thumbnail}
+                      fill
+                      priority
+                      sizes="(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      alt="Music Cover"
+                    />
+                  </Box>
                   <CardContent>
                     <Typography variant="h4" color="text.success" gutterBottom>
                       {album.price}
@@ -93,8 +110,18 @@ const Home: NextPageWithLayout = () => {
   )
 }
 
-export default Home
+
+const Home: NextPageWithLayout = ({ ...props }) => {
+  const { fallback }: { fallback?: any } = props;
+  return (
+    <SWRConfig value={{ fallback }}>
+      <HomeTemplate />
+    </SWRConfig>
+  )
+}
 
 Home.getLayout = (page) => {
   return <PrimaryLayout>{page}</PrimaryLayout>
 }
+
+export default Home

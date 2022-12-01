@@ -39,3 +39,6 @@ a {
   -webkit-backdrop-filter: blur(16px) saturate(135%);
   background-color: rgba(255, 255, 255, 0.73);
 }
+.album-thumbnail{
+  object-fit: cover;
+}
