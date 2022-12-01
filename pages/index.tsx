@@ -19,8 +19,8 @@ const ALBUMS_API = '/api/albums';
 
 export async function getServerSideProps(context: any) {
   const NextRequestMetaSymbol = Reflect.ownKeys(context.req).find(key => key.toString() === 'Symbol(NextRequestMeta)');
-  const serverURL = NextRequestMetaSymbol && context.req[NextRequestMetaSymbol].__NEXT_INIT_URL;
-  const albumsInfo = await fetcher(serverURL + ALBUMS_API);
+  const serverURL = new URL(NextRequestMetaSymbol && context.req[NextRequestMetaSymbol].__NEXT_INIT_URL)
+  const albumsInfo = await fetcher(serverURL.origin + ALBUMS_API);
   return {
     props: {
       fallback: {
