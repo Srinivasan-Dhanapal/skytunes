@@ -7,6 +7,7 @@ import CardHeader from '@mui/material/CardHeader'
 import Container from '@mui/material/Container'
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
+import absoluteUrl from 'next-absolute-url'
 import Image from 'next/image'
 import * as React from 'react'
 import useSWR, { SWRConfig } from 'swr'
@@ -18,9 +19,8 @@ const fetcher = (arg: any, ...args: any) => fetch(arg, ...args).then((res) => re
 const ALBUMS_API = '/api/albums';
 
 export async function getServerSideProps(context: any) {
-  const NextRequestMetaSymbol = Reflect.ownKeys(context.req).find(key => key.toString() === 'Symbol(NextRequestMeta)');
-  const serverURL = new URL(NextRequestMetaSymbol && context.req[NextRequestMetaSymbol].__NEXT_INIT_URL)
-  const albumsInfo = await fetcher(serverURL.origin + ALBUMS_API);
+  const { origin } = absoluteUrl(context.req)
+  const albumsInfo = await fetcher(origin + ALBUMS_API);
   return {
     props: {
       fallback: {
